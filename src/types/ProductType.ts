@@ -1,6 +1,6 @@
 type brandType = {
   id: number;
-  namKr: string;
+  nameKr: string;
   nameEn: string;
 };
 

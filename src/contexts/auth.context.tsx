@@ -1,8 +1,7 @@
 "use client";
 
-import { instance } from "@/api/API";
 import { useRouter } from "next/navigation";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 type AuthContextValue = {
   isLoggedIn: boolean;
@@ -21,7 +20,8 @@ const AuthContext = createContext<AuthContextValue>(initialValue);
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // todo :로그인 상태 바꾸기
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isAuthInitialized, setIsAuthInitialized] = useState(false);
   const router = useRouter();
 
@@ -35,13 +35,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // todo : 액세스 토큰 제거
   };
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      instance.defaults.headers.common.Authorization = "";
-      // todo : 로그인 모달 띄우기
-    }
-    router.replace("/");
-  }, [router, isLoggedIn]);
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     instance.defaults.headers.common.Authorization = "";
+  //     // todo : 로그인 모달 띄우기
+  //   }
+  //   router.replace("/");
+  // }, [router, isLoggedIn]);
 
   const value: AuthContextValue = {
     isLoggedIn,
