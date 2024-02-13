@@ -5,9 +5,12 @@ import { useMutation } from "@tanstack/react-query";
 import { SyntheticEvent, useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
+// import useInput from "@/hooks/useInput";
 
 function SignUpForm() {
   const { logIn } = useAuth();
+  // useInput();
+
   const [signUpData, setSignUpData] = useState({
     email: "",
     pw: "",
