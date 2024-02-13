@@ -1,5 +1,7 @@
+import Page from "@/components/Page/Page";
+
 function CartPage() {
-  return <div></div>;
+  return <Page>CartPage</Page>;
 }
 
 export default CartPage;

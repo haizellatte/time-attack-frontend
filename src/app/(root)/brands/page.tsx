@@ -1,5 +1,7 @@
+import Page from "@/components/Page/Page";
+
 function BrandPage() {
-  return <div>BrandPage</div>;
+  return <Page>BrandPage</Page>;
 }
 
 export default BrandPage;
