@@ -8,7 +8,7 @@ import ProductItem from "./ProductItem";
 function ProductItems() {
   const { data: products } = useQuery({
     queryKey: ["productItems", { isList: true }],
-    queryFn: API.getAllProductsApi,
+    queryFn: API.productApi.getAllProductsApi,
     refetchOnWindowFocus: true,
   });
 

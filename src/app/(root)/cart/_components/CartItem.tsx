@@ -1,13 +1,17 @@
 "use client";
-import useAmount from "@/hooks/useAmount";
+import CartQuery from "@/react-query/CartQuery";
 import ProductType from "@/types/ProductType";
 import Image from "next/image";
 import Link from "next/link";
 
-function CartItem({ product }: { product: ProductType }) {
-  const { amount, decreaseAmount, increaseAmount } = useAmount(
-    Number(product.id)
-  );
+function CartItem({
+  product,
+  quantity,
+}: {
+  product: ProductType;
+  quantity: number;
+}) {
+  const { addCart, removeCart } = CartQuery();
 
   return (
     <>
@@ -46,16 +50,16 @@ function CartItem({ product }: { product: ProductType }) {
           </Link>
           <div className="grid grid-cols-3 border border-black self-center h-4 w-12 sm:h-8 sm:w-24 items-stretch shrink-0">
             <button
-              onClick={decreaseAmount}
+              onClick={() => removeCart(product.id)}
               className="bg-black text-white flex items-center justify-center text-lg font-bold"
             >
               -
             </button>
             <span className="flex items-center justify-center text-[15px] font-bold">
-              {amount}
+              {quantity}
             </span>
             <button
-              onClick={increaseAmount}
+              onClick={() => addCart(product.id)}
               className="bg-black text-white flex items-center justify-center text-lg font-bold"
             >
               +

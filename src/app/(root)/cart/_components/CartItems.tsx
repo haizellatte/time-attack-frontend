@@ -1,17 +1,17 @@
 "use client";
-import { useAppSelector } from "@/redux/store";
+import CartQuery from "@/react-query/CartQuery";
 import Link from "next/link";
 import CartItem from "./CartItem";
 
 function CartItems() {
-  const carts = useAppSelector((state) => state.cart.carts);
+  const { cartProducts } = CartQuery();
 
   return (
     <ul className="border-b">
-      {carts.length > 0 ? (
-        carts.map((product) => (
-          <div key={product.id}>
-            <CartItem product={product} />
+      {cartProducts && cartProducts.length > 0 ? (
+        cartProducts.map((cart: any) => (
+          <div key={cart.product.id}>
+            <CartItem product={cart.product} quantity={cart.quantity} />
           </div>
         ))
       ) : (

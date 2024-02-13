@@ -1,39 +1,39 @@
 "use client";
 
 import { useAuth } from "@/contexts/auth.context";
-import { setDeleteProduct, setInsertProduct } from "@/redux/slices/cartSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
+import CartQuery from "@/react-query/CartQuery";
+
 import ProductType from "@/types/ProductType";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function AddCartButton({ product }: { product: ProductType }) {
   const [isExistCart, setIsExistCart] = useState(false);
-  const dispatch = useAppDispatch();
-  const carts = useAppSelector((state) => state.cart.carts);
+
   // todo: 로그인 안되어 있으면 로그인 모달 띄우기
   const { isLoggedIn } = useAuth();
 
-  const findIndex = carts.findIndex(
-    (cartProduct) => cartProduct.id === product.id
-  );
+  const { cartProducts, addCart, removeCart } = CartQuery();
 
   const handleAddCart = () => {
     alert("장바구니에 추가되었습니다.");
-    dispatch(setInsertProduct(product));
+    addCart(product.id);
+
     setIsExistCart(true);
   };
 
   const handleDeleteCart = () => {
     alert("장바구니에서 제거되었습니다.");
-    dispatch(setDeleteProduct(product.id));
+    removeCart(product.id);
     setIsExistCart(false);
   };
 
-  useEffect(() => {
-    if (findIndex > -1) {
-      setIsExistCart(true);
-    }
-  }, []);
+  // todo : 초기 마운팅 시 장바구니에 해당 아이디가 있으면 상태 바꿔주기
+
+  // useEffect(() => {
+  //   if (findIndex > -1) {
+  //     setIsExistCart(true);
+  //   }
+  // }, []);
 
   return (
     <>

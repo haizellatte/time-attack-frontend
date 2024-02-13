@@ -2,26 +2,20 @@ import { instance } from "./API";
 
 async function getCartApi() {
   const response = await instance.get(`/cart`);
-  const data = await response.data;
+  const data = await response.data.result.items;
   return data;
 }
 
 async function addCartApi(productId: number) {
-  const response = await instance.post(`/cart/products/${productId}`);
-  const data = await response.data;
-  console.log(data);
+  await instance.post(`/cart/products/${productId}`);
 }
 
 async function removeCartApi(productId: number) {
-  const response = await instance.delete(`/cart/products/${productId}`);
-  const data = await response.data;
-  console.log(data);
+  await instance.delete(`/cart/products/${productId}`);
 }
 
 async function clearCartApi(productId: number) {
-  const response = await instance.delete(`/cart/products/${productId}/clear`);
-  const data = await response.data;
-  console.log(data);
+  await instance.delete(`/cart/products/${productId}/clear`);
 }
 const cartApi = {
   getCartApi,

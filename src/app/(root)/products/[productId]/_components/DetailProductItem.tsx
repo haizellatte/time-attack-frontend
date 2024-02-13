@@ -12,7 +12,7 @@ function DetailProductItem() {
 
   const { data: product } = useQuery({
     queryKey: ["detailProductItems", { isList: true }],
-    queryFn: () => API.getDetailProductApi(Number(productId)),
+    queryFn: () => API.productApi.getDetailProductApi(Number(productId)),
     refetchOnWindowFocus: true,
   });
 
