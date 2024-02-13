@@ -10,8 +10,6 @@ function HeaderAuth() {
   const dispatch = useAppDispatch();
   const isModalOpen = useAppSelector((state) => state.modal.isOpen);
 
-  console.log(isModalOpen);
-
   return (
     <div className="ml-auto flex items-center gap-x-4">
       {isLoggedIn ? (

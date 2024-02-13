@@ -1,5 +1,6 @@
 import axios from "axios";
 import auth from "./authApi";
+import AuthAPI from "./authApi2";
 import cartApi from "./cartApi";
 import productApi from "./productApi";
 
@@ -8,6 +9,6 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
-const API = { auth, productApi, cartApi };
+const API = { auth, productApi, cartApi, AuthAPI };
 
 export default API;

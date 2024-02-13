@@ -8,7 +8,6 @@ function CartQuery() {
   const { data: cartProducts } = useQuery({
     queryKey: ["carts", { isList: true }],
     queryFn: API.cartApi.getCartApi,
-    refetchOnWindowFocus: true,
   });
 
   const { mutate: addCart } = useMutation({

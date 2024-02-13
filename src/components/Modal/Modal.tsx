@@ -23,7 +23,10 @@ function Modal() {
         className="bg-white rounded-md w-full max-w-[400px] px-5 py-8"
       >
         <h2 className="font-bold text-3xl text-center my-12">로그인</h2>
-        <section className="flex flex-col items-center gap-y-4 max-w-sm mx-auto w-full">
+        <form
+          className="flex flex-col items-center gap-y-4 max-w-sm mx-auto w-full"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <Input
             value={userData.email}
             name="email"
@@ -44,7 +47,7 @@ function Modal() {
           />
           <div className="mt-2"></div>
           <Button text="로그인하기" />
-        </section>
+        </form>
       </div>
     </div>
   );

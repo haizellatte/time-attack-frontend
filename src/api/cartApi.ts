@@ -3,6 +3,7 @@ import { instance } from "./API";
 async function getCartApi() {
   const response = await instance.get(`/cart`);
   const data = await response.data.result.items;
+
   return data;
 }
 

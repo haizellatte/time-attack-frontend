@@ -7,7 +7,7 @@ import Button from "./Button";
 import Input from "./Input";
 
 function SignUpForm() {
-  const { logIn } = useAuth();
+  const { isLoggedIn, logIn } = useAuth();
 
   const [signUpData, setSignUpData] = useState({
     email: "",
@@ -15,13 +15,19 @@ function SignUpForm() {
     confirmPw: "",
   });
 
-  const { mutate, isPending } = useMutation({ mutationFn: API.auth.signUp });
+  console.log(isLoggedIn);
+
+  const { mutate } = useMutation({
+    mutationFn: API.AuthAPI.SignupApi,
+    onSuccess: () => logIn(),
+  });
 
   const handleSubmit = async (
     e: SyntheticEvent<HTMLFormElement, SubmitEvent>
   ) => {
-    const { email, pw, confirmPw } = signUpData;
     e.preventDefault();
+    const { email, pw, confirmPw } = signUpData;
+    const dto = { email, pw };
 
     if (!email) return alert("이메일을 입력해 주세요.");
     if (!pw) return alert("비밀번호를 입력해 주세요.");
@@ -29,12 +35,7 @@ function SignUpForm() {
     if (pw !== confirmPw)
       return alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
 
-    const data = { email, pw };
-
-    mutate(data, {
-      onSuccess: () => logIn,
-      onError: (err) => console.log(err),
-    });
+    mutate({ dto });
   };
 
   return (

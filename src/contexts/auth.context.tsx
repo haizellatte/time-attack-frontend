@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react";
 
 type AuthContextValue = {
   isLoggedIn: boolean;
-  logIn: (accessToken: string) => void;
+  logIn: () => void;
   logOut: () => void;
 };
 
