@@ -38,8 +38,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isLoggedIn) {
       instance.defaults.headers.common.Authorization = "";
+      // todo : 로그인 모달 띄우기
     }
-
     router.replace("/");
   }, [router, isLoggedIn]);
 

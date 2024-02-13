@@ -1,8 +1,8 @@
-interface brandType {
+type brandType = {
   id: number;
   namKr: string;
   nameEn: string;
-}
+};
 
 interface ProductType {
   brand: brandType;

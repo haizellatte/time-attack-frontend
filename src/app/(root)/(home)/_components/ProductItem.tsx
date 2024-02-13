@@ -1,14 +1,10 @@
 "use client";
 
+import ProductType from "@/types/ProductType";
 import Image from "next/image";
 import Link from "next/link";
-import { ComponentProps } from "react";
 
-interface ProductItemProps {
-  product: Array<ComponentProps<typeof ProductItem>["product"]>;
-}
-
-function ProductItem({ product }: ProductItemProps) {
+function ProductItem({ product }: { product: ProductType }) {
   const { brand, imgSrc, name, originalPrice, price } = product;
 
   return (
@@ -22,7 +18,6 @@ function ProductItem({ product }: ProductItemProps) {
           alt={name}
           loading="lazy"
           decoding="async"
-          data-nimg="fill"
           fill
           unoptimized
           className="object-cover group-hover:scale-105 transition-transform absolute h-full w-full transparent left-0 top-0 right-0 bottom-0"
