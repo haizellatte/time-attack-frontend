@@ -1,12 +1,16 @@
 "use client";
 import Modal from "@/components/Modal";
 import { useAuth } from "@/contexts/auth.context";
+import { toggleModal } from "@/redux/slices/modalSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import Link from "next/link";
-import { useState } from "react";
 
 function HeaderAuth() {
   const { isLoggedIn } = useAuth();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const isModalOpen = useAppSelector((state) => state.modal.isOpen);
+
+  console.log(isModalOpen);
 
   return (
     <div className="ml-auto flex items-center gap-x-4">
@@ -26,19 +30,13 @@ function HeaderAuth() {
           </Link>
           <div
             className="text-[15px] font-medium cursor-pointer"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => dispatch(toggleModal(true))}
           >
             로그인
           </div>
         </>
       )}
-      {isModalOpen ? (
-        <>
-          <Modal setIsModalOpen={setIsModalOpen} />
-        </>
-      ) : (
-        <></>
-      )}
+      {isModalOpen && <Modal />}
     </div>
   );
 }

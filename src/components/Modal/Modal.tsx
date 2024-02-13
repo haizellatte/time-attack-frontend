@@ -2,13 +2,12 @@
 
 import Button from "@/app/(root)/sign-up/_components/Button";
 import Input from "@/app/(root)/sign-up/_components/Input";
+import { toggleModal } from "@/redux/slices/modalSlice";
+import { useAppDispatch } from "@/redux/store";
 import { useState } from "react";
 
-interface ModalProps {
-  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-function Modal({ setIsModalOpen }: ModalProps) {
+function Modal() {
+  const dispatch = useAppDispatch();
   const [userData, setUserData] = useState({
     email: "",
     pw: "",
@@ -17,7 +16,7 @@ function Modal({ setIsModalOpen }: ModalProps) {
   return (
     <div
       className="bg-black/50 flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 z-20"
-      onClick={() => setIsModalOpen(false)}
+      onClick={() => dispatch(toggleModal(false))}
     >
       <div
         onClick={(e) => e.stopPropagation()}
