@@ -33,9 +33,9 @@ function ProductItem({ product }: ProductItemProps) {
         <h6 className="text-[15px]">{name}</h6>
         <div className="text-sm flex flex-col sm:flex-row items-baseline gap-1.5">
           <span className="text-red-500 line-through font-semibold">
-            {originalPrice.toLocaleString()}
+            {`₩${originalPrice.toLocaleString()}`}
           </span>
-          <span className="font-bold">{price.toLocaleString()}</span>
+          <span className="font-bold">{`₩${price.toLocaleString()}`}</span>
         </div>
       </div>
     </Link>

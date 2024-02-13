@@ -6,13 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import ProductItem from "./ProductItem";
 
 function ProductItems() {
-  const { data } = useQuery({
+  const { data: products } = useQuery({
     queryKey: ["productItems", { isList: true }],
     queryFn: API.getAllProductsApi,
     refetchOnWindowFocus: true,
   });
-
-  const products = data?.result;
 
   return (
     <div>

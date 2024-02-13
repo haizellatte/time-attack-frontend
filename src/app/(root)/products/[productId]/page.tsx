@@ -1,5 +1,7 @@
+import DetailProductItem from "./_components/DetailProductItem";
+
 function DetailProductPage() {
-  return <div>DetailProductPage</div>;
+  return <DetailProductItem />;
 }
 
 export default DetailProductPage;
