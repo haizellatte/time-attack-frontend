@@ -5,7 +5,7 @@ async function SignupApi(dto: AuthType) {
   await instance.post(`/auth/sign-up`);
 }
 
-async function LogInApi() {
+async function LogInApi(dto: AuthType) {
   await instance.post(`/auth/log-in`);
 }
 
