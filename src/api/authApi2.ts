@@ -1,6 +1,7 @@
+import AuthType from "@/types/AuthType";
 import { instance } from "./API";
 
-async function SignupApi() {
+async function SignupApi(dto: AuthType) {
   await instance.post(`/auth/sign-up`);
 }
 

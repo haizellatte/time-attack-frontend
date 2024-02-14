@@ -35,7 +35,7 @@ function SignUpForm() {
     if (pw !== confirmPw)
       return alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
 
-    mutate({ dto });
+    mutate(dto);
   };
 
   return (
