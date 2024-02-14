@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
-import ChildrenType from "@/types/ChildrenType";
 
-function RootLayout({ children }: ChildrenType) {
+function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <div id="root">
       <Header />
